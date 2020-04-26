@@ -9,7 +9,7 @@ import pandas as pd
 aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
 
 fig = plt.figure()
-nx = 3
+nx = 4
 ny = 4
 for i in range(1, nx*ny+1):
     ax = fig.add_subplot(ny,nx, i)
@@ -20,7 +20,8 @@ for i in range(1, nx*ny+1):
 plt.savefig("markers.pdf")
 plt.show()
 
-board = aruco.CharucoBoard_create(3, 3, 1, 0.8, aruco_dict)
+#create a 4x4 checkerboard
+board = aruco.CharucoBoard_create(4, 4, 1, 0.8, aruco_dict)
 imboard = board.draw((4000, 4000))
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
