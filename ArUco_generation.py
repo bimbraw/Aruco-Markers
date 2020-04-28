@@ -17,7 +17,7 @@ for i in range(1, nx*ny+1):
     plt.imshow(img, cmap = mpl.cm.gray, interpolation = "nearest")
     ax.axis("off")
 
-plt.savefig("markers.pdf")
+plt.savefig("markers_new.pdf")
 plt.show()
 
 #create a 4x4 checkerboard
@@ -30,6 +30,7 @@ ax.axis("off")
 cv2.imwrite("chessboard.tiff",imboard)
 
 plt.grid()
+plt.savefig("markers_checkerboard.pdf")
 plt.show()
 
 print("Chessboard printed")
