@@ -87,4 +87,29 @@ T =
    58.0000
    20.0000
 >>
+
+function
+
+function [ T, invT ] = buildT( vars )
+%BUILDT Summary of this function goes here
+%   vars: angles (degrees) and position defining plane location
+%       roll, pitch, yaw, x, y, z
+​
+roll = vars(1);
+pitch = vars(2);
+yaw = vars(3);
+x = vars(4);
+y = vars(5);
+z = vars(6);
+​
+Rz = [cosd(roll) -sind(roll) 0;sind(roll) cosd(roll) 0;0 0 1];
+Ry = [cosd(pitch) 0 sind(pitch);0 1 0;-sind(pitch) 0 cosd(pitch)];
+Rx = [1 0 0;0 cosd(yaw) -sind(yaw);0 sind(yaw) cosd(yaw)];
+R = Rz*Ry*Rx;
+t = [x;y;z];
+T = [R t;0 0 0 1];
+invT = [R' -R'*t;0 0 0 1];
+​
+end
+
 '''
