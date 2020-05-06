@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import pandas as pd
 
-frame = cv2.imread("Figure_1.png")
+frame = cv2.imread("Figure_3.png")
 plt.figure()
 plt.imshow(frame)
 plt.show()
 
 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
+aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_250)
 parameters =  aruco.DetectorParameters_create()
 corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
 frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
