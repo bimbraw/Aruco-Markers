@@ -1,3 +1,40 @@
+import array as arr
+import numpy as np
+
+x1 = y1 = z1 = 0
+x2 = y2 = z2 = 0
+x3 = y3 = z3 = 0
+x4 = y4 = z4 = 0
+
+v1 = v2 = v3 = v4 = v5 = v6 = 0
+roll = pitch = yaw = surge = sway = heave = 0
+
+point1_c0 = np.array([[x1, y1, z1]]).transpose()
+point2_c0 = np.array([[x2, y2, z2]]).transpose()
+point3_c0 = np.array([[x3, y3, z3]]).transpose()
+point4_c0 = np.array([[x4, y4, z4]]).transpose()
+
+#print(point1_c0)
+
+def build_t(vars):
+    roll = vars[1]
+    pitch = vars[2]
+    yaw = vars[3]
+    surge = vars[4]
+    sway = vars[5]
+    heave = vars[6]
+
+    Rz =
+
+vars = np.array([[v1, v2, v3, v4, v5, v6]])
+
+build_t(vars)
+
+
+
+
+
+
 #currently in MATLAB format
 '''
 >> point1_c0 = [10 10 50]';

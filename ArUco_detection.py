@@ -17,6 +17,8 @@ parameters =  aruco.DetectorParameters_create()
 corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
 frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
 
+print(corners)
+
 plt.figure()
 plt.imshow(frame_markers)
 for i in range(len(ids)):

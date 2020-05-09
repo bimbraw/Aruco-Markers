@@ -1,6 +1,33 @@
 #point cloud registration matlab function
+import numpy as np
+import statistics
 
-'''
+def pt_cloud_registration(pt_cloud_1, pt_cloud_2):
+    n1 = pt_cloud_1.shape[0]
+    n2 = pt_cloud_2.shape[0]
+    avg1 = statistics.mean(pt_cloud_1)
+    avg2 = statistics.mean(pt_cloud_2)
+    diff1 = pt_cloud_1
+    diff2 = pt_cloud_2
+
+    for i in range(1, n1):
+        diff1[i, :] = diff1[i, :] - avg1
+
+    for i in range(1, n2):
+        diff2[i, :] = diff2[i, :] - avg2
+
+    h = np.zeros(3, 3)
+    h_i = np.zeros(3, 3)
+
+    for i in range(1, n1):
+        h_i = [[diff1(i, 1) * diff2(i, 1), diff1(i, 1) * diff2(i, 2), diff1(i, 1) * diff2(i, 3)] \
+               [diff1(i, 2) * diff2(i, 1), diff1(i, 2) * diff2(i, 2), diff1(i, 2) * diff2(i, 3)] \
+               [diff1(i, 3) * diff2(i, 1), diff1(i, 3) * diff2(i, 2), diff1(i, 3) * diff2(i, 3)]]
+        h = h + h_i
+
+
+
+        '''
 function[R, T] = ptCloudRegistration(ptCloud1, ptCloud2)
 ​
 % ptCloud1 = c2;
