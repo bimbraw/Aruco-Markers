@@ -1,3 +1,19 @@
+import numpy as np
+
+b = []
+
+a = np.array([[[[437. 387.],
+                [367. 382.],
+                [372. 310.],
+                [439. 316.]]]])
+
+x = a[:,:,0,0]
+y = a[:,:,0,1]
+
+print(int(x))
+print(int(y))
+
+'''
 #point cloud registration matlab function
 import numpy as np
 import statistics
@@ -27,7 +43,8 @@ def pt_cloud_registration(pt_cloud_1, pt_cloud_2):
 
 
 
-        '''
+'''
+'''
 function[R, T] = ptCloudRegistration(ptCloud1, ptCloud2)
 ​
 % ptCloud1 = c2;

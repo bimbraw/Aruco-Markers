@@ -16,35 +16,25 @@ while(True):
     corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
     frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
 
-    #l = data.shape[0] // 2
-    #corners = data[["c1", "c2", "c3", "c4"]].values.reshape(l, 2, 4)
-    #c1 = corners[:, :, 0]
-    #c2 = corners[:, :, 1]
-    #c3 = corners[:, :, 2]
-    #c4 = corners[:, :, 3]
+    res = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
 
-    print(type(array))
+    x1 = (res[0][0][0][0][0], res[0][0][0][0][1])
+    x2 = (res[0][0][0][1][0], res[0][0][0][1][1])
+    x3 = (res[0][0][0][2][0], res[0][0][0][2][1])
+    x4 = (res[0][0][0][3][0], res[0][0][0][3][1])
 
-    #print(corners)
-    #print(type(corners))
+    print(x1)
 
-    #print(len(corners)) # this is 1
-    #print(np.shape(corners)) # 1, 1, 4, 2 for 1
-    #1st element number of markers
-    #2nd - don't know
-    #3rd - rows
-    #4th - column
-    #print(corners[0][0][0])
-
-    q = np.array(corners)
+    #q = np.array(corners)
 
     #print(q[0][0][0][0]) #this doesn't work
-    print(q)
+    #print(q)
 
-    #x = q[:, :, 0, 0]
-    #y = q[:, :, 0, 1]
+    #x = q[0, 0]
+    #y = q[0, 1]
 
     #print(int(x))
+
     #print(int(y))
 
     #print(type(corners))
