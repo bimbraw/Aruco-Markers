@@ -16,35 +16,29 @@ while(True):
     corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
     frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
 
-    res = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
+    #size_of_marker = 0.053 #5.3 cm
+    #res = np.array(ids)
+    #p = res.tolist()
 
-    x1 = (res[0][0][0][0][0], res[0][0][0][0][1])
-    x2 = (res[0][0][0][1][0], res[0][0][0][1][1])
-    x3 = (res[0][0][0][2][0], res[0][0][0][2][1])
-    x4 = (res[0][0][0][3][0], res[0][0][0][3][1])
+    #focal_length = cap.get(3)
+    #center = (cap.get(3) / 2, cap.get(4) / 2)
+    #camera_matrix = np.array(
+    #    [[focal_length, 0, center[0]],
+    #     [0, focal_length, center[1]],
+    #     [0, 0, 1]], dtype="double"
+    #)
 
-    print(x1)
+    #these_res_corners = np.concatenate(corners, axis=1)
+    #dist_coeffs = np.zeros((4, 1))  # Assuming no lens distortion
 
-    #q = np.array(corners)
+    #these_ref_corners = np.concatenate([refCorners[x] for x in idx], axis=1)
 
-    #print(q[0][0][0][0]) #this doesn't work
-    #print(q)
+    #success, rotation_vector, translation_vector = cv2.solvePnP(these_res_corners, these_res_corners, camera_matrix,
+    # dist_coeffs, flags=cv2.cv2.SOLVEPNP_ITERATIVE)
+    #rotation_matrix, _ = cv2.Rodrigues(rotation_vector)
+    #rvecs, tvecs, trash = aruco.estimatePoseSingleMarkers(corners, size_of_marker, mtx, dist)
 
-    #x = q[0, 0]
-    #y = q[0, 1]
-
-    #print(int(x))
-
-    #print(int(y))
-
-    #print(type(corners))
-    #print(corners[0][0][0])
-
-    #print(corners)
-    #print(corners[0][0])
-    #print(*corners[[1]])
-
-    #cv2.putText(gray, '.',)
+    #print(rotation_matrix)
 
     cv2.imshow('frame', frame_markers)
     if cv2.waitKey(1) & 0xFF == ord('q'):
