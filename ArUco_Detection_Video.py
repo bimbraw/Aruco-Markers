@@ -16,6 +16,8 @@ while(True):
     corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
     frame_markers = aruco.drawDetectedMarkers(frame.copy(), corners, ids)
 
+    #this is the transformation matrix part
+    
     #size_of_marker = 0.053 #5.3 cm
     #res = np.array(ids)
     #p = res.tolist()

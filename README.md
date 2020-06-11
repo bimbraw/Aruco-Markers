@@ -6,4 +6,4 @@ Three files are as follows -
 2. ArUco_detection.py - To detect corners and edges in images.
 3. ArUco_Detection_Video.py - To detect corners and edges in webcam video.
 
-Associated files folder has various examples used.
+Associated files folder has various examples used. Use the checkerboard for calibration.
