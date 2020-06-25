@@ -8,7 +8,7 @@ import pandas as pd
 # Importing the dataset
 # Average shoulder width from babies (~13 cm to adults (women ~35, men ~41))
 # data from 35 to 55 cm, with my data being 49/5 cm)
-dataset = pd.read_csv('SVMdata_edited.csv')
+dataset = pd.read_csv('SVMdata_centering.csv')
 X = dataset.iloc[:, 0:-1].values
 y = dataset.iloc[:, -1].values
 #print(X)
@@ -29,12 +29,12 @@ y = sc_y.fit_transform(y)
 from sklearn.svm import SVR
 regressor = SVR(kernel = 'rbf')
 svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
-#svr_lin = SVR(kernel='linear', C=1e3)
-#svr_poly = SVR(kernel='poly', C=1e3, degree=180)
+svr_lin = SVR(kernel='linear', C=1e3)
+svr_poly = SVR(kernel='poly', C=1e3, degree=180)
 regressor.fit(X, y)
 y_rbf = svr_rbf.fit(X, y).predict(X)
-#y_lin = svr_lin.fit(X, y).predict(X)
-#y_poly = svr_poly.fit(X, y).predict(X)
+y_lin = svr_lin.fit(X, y).predict(X)
+y_poly = svr_poly.fit(X, y).predict(X)
 
 # Predicting a new result
 print(sc_y.inverse_transform(regressor.predict(sc_X.transform([[36.5]]))))
