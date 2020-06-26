@@ -39,7 +39,6 @@ while(True):
     # dist_coeffs, flags=cv2.cv2.SOLVEPNP_ITERATIVE)
     #rotation_matrix, _ = cv2.Rodrigues(rotation_vector)
     #rvecs, tvecs, trash = aruco.estimatePoseSingleMarkers(corners, size_of_marker, mtx, dist)
-
     #print(rotation_matrix)
 
     cv2.imshow('frame', frame_markers)
