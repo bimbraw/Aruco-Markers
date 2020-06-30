@@ -3,6 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import csv
 
 # Importing the dataset
 dataset_1_u = pd.read_csv('SVM_1_u.csv')
@@ -76,6 +77,7 @@ y_8_v = y_8_v.reshape(len(y_8_v),1)
 
 
 # Feature Scaling
+
 from sklearn.preprocessing import StandardScaler
 sc_1_u_x = StandardScaler()
 sc_2_u_x = StandardScaler()
@@ -110,6 +112,8 @@ sc_6_v_y = StandardScaler()
 sc_7_v_y = StandardScaler()
 sc_8_v_y = StandardScaler()
 
+#print(x_1_u)
+
 x_1_u = sc_1_u_x.fit_transform(x_1_u)
 x_2_u = sc_2_u_x.fit_transform(x_2_u)
 x_3_u = sc_3_u_x.fit_transform(x_3_u)
@@ -127,6 +131,8 @@ x_6_v = sc_6_v_x.fit_transform(x_6_v)
 x_7_v = sc_7_v_x.fit_transform(x_7_v)
 x_8_v = sc_8_v_x.fit_transform(x_8_v)
 
+#print(x_1_u)
+
 y_1_u = sc_1_u_y.fit_transform(y_1_u)
 y_2_u = sc_2_u_y.fit_transform(y_2_u)
 y_3_u = sc_3_u_y.fit_transform(y_3_u)
@@ -143,6 +149,7 @@ y_5_v = sc_5_v_y.fit_transform(y_5_v)
 y_6_v = sc_6_v_y.fit_transform(y_6_v)
 y_7_v = sc_7_v_y.fit_transform(y_7_v)
 y_8_v = sc_8_v_y.fit_transform(y_8_v)
+
 
 # Training the SVR model on the whole dataset
 from sklearn.svm import SVR
@@ -185,7 +192,27 @@ y_rbf_7_v = svr_rbf.fit(x_7_v, y_7_v).predict(x_7_v)
 y_rbf_8_v = svr_rbf.fit(x_8_v, y_8_v).predict(x_8_v)
 
 # Predicting a new result
-print(sc_1_u_y.inverse_transform(regressor.predict(sc_1_u_x.transform([[129.6]]))))
+df = pd.read_csv("SVM_1_u.csv")
+vals = df.values[:,1]
+angle_vals = df.values[:,0]
+#print(vals[0])
+
+for i in range(0,len(vals)):
+    #print(vals[i])
+    print(str(sc_8_v_y.inverse_transform(regressor.predict
+                                         (sc_8_v_x.transform([[angle_vals[i]]])))))
+
+'''
+plt.scatter(x_2_u, y_2_u, color='darkorange', label='data')
+plt.plot(x_2_u, y_rbf_2_u, color='navy', label='RBF model')
+plt.xlabel('Normalized Angle Values')
+plt.ylabel('Normalized U coordinate Values')
+plt.title('Fittings and data plotting')
+plt.legend()
+plt.show()
+
+
+#print(sc_1_u_y.inverse_transform(regressor.predict(sc_1_u_x.transform([[dataset_1_u]]))))
 print(sc_2_u_y.inverse_transform(regressor.predict(sc_2_u_x.transform([[129.6]]))))
 print(sc_3_u_y.inverse_transform(regressor.predict(sc_3_u_x.transform([[129.6]]))))
 print(sc_4_u_y.inverse_transform(regressor.predict(sc_4_u_x.transform([[129.6]]))))
@@ -204,7 +231,8 @@ print(sc_7_v_y.inverse_transform(regressor.predict(sc_7_v_x.transform([[129.6]])
 print(sc_8_v_y.inverse_transform(regressor.predict(sc_8_v_x.transform([[129.6]]))))
 
 lw = 2
-plt.scatter(x_1_u, y_1_u, color='darkorange', label='data')
+plt.scatter(x_3_u, y_3_u, color='darkorange')#, label='data')
+
 plt.scatter(x_2_u, y_2_u, color='darkorange', label='data')
 plt.scatter(x_3_u, y_3_u, color='darkorange', label='data')
 plt.scatter(x_4_u, y_4_u, color='darkorange', label='data')
@@ -221,7 +249,7 @@ plt.scatter(x_6_v, y_6_v, color='darkorange', label='data')
 plt.scatter(x_7_v, y_7_v, color='darkorange', label='data')
 plt.scatter(x_8_v, y_8_v, color='darkorange', label='data')
 
-plt.plot(x_1_u, y_rbf_1_u, color='navy', lw=lw, label='RBF model')
+plt.plot(x_3_u, y_rbf_3_u, color='navy')#, lw=lw, label='RBF model')
 plt.plot(x_2_u, y_rbf_2_u, color='navy', lw=lw, label='RBF model')
 plt.plot(x_3_u, y_rbf_3_u, color='navy', lw=lw, label='RBF model')
 plt.plot(x_4_u, y_rbf_4_u, color='navy', lw=lw, label='RBF model')
@@ -238,8 +266,9 @@ plt.plot(x_6_v, y_rbf_6_v, color='navy', lw=lw, label='RBF model')
 plt.plot(x_7_v, y_rbf_7_v, color='navy', lw=lw, label='RBF model')
 plt.plot(x_8_v, y_rbf_8_v, color='navy', lw=lw, label='RBF model')
 
-plt.xlabel('Angle')
-plt.ylabel('Ratio')
+plt.xlabel('Angle in Degrees')
+plt.ylabel('U coordinate')
 plt.title('Fittings and data plotting')
 plt.legend()
 plt.show()
+'''
