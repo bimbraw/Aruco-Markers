@@ -192,26 +192,30 @@ y_rbf_7_v = svr_rbf.fit(x_7_v, y_7_v).predict(x_7_v)
 y_rbf_8_v = svr_rbf.fit(x_8_v, y_8_v).predict(x_8_v)
 
 # Predicting a new result
-df = pd.read_csv("SVM_1_u.csv")
+df = pd.read_csv("SVM_8_v.csv")
 vals = df.values[:,1]
 angle_vals = df.values[:,0]
 #print(vals[0])
 
 for i in range(0,len(vals)):
     #print(vals[i])
-    print(str(sc_8_v_y.inverse_transform(regressor.predict
-                                         (sc_8_v_x.transform([[angle_vals[i]]])))))
+    print(sc_8_v_y.inverse_transform(regressor.predict(sc_8_v_x.transform([[angle_vals[i]]]))))
 
+for i in range(0,len(vals)):
+    print(str(i) + ". For " + str(angle_vals[i]) +
+          " degrees, the value is " + str(vals[i]) +
+          " and the prediction is " + str(sc_8_v_y.inverse_transform(regressor.predict
+                                                                     (sc_8_v_x.transform([[angle_vals[i]]])))))
 '''
-plt.scatter(x_2_u, y_2_u, color='darkorange', label='data')
-plt.plot(x_2_u, y_rbf_2_u, color='navy', label='RBF model')
+plt.scatter(x_4_u, y_4_u, color='darkorange', label='data')
+plt.plot(x_4_u, y_rbf_4_u, color='navy', label='RBF model')
 plt.xlabel('Normalized Angle Values')
 plt.ylabel('Normalized U coordinate Values')
 plt.title('Fittings and data plotting')
 plt.legend()
 plt.show()
-
-
+'''
+'''
 #print(sc_1_u_y.inverse_transform(regressor.predict(sc_1_u_x.transform([[dataset_1_u]]))))
 print(sc_2_u_y.inverse_transform(regressor.predict(sc_2_u_x.transform([[129.6]]))))
 print(sc_3_u_y.inverse_transform(regressor.predict(sc_3_u_x.transform([[129.6]]))))
