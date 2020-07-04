@@ -224,8 +224,8 @@ print(sklearn.metrics.r2_score(y_1_u, y_rbf_1_u,
                                multioutput='uniform_average'))
 
 
-plt.scatter(x_1_u, y_1_u, color='darkorange', label='data')
-plt.plot(x_1_u, y_rbf_1_u, color='navy', label='RBF model')
+plt.scatter(x_2_u, y_2_u, color='darkorange', label='data')
+plt.plot(x_2_u, y_rbf_2_u, color='navy', label='RBF model')
 plt.xlabel('Normalized Angle Values')
 plt.ylabel('Normalized U coordinate Values')
 plt.title('Fittings and data plotting')
