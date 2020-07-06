@@ -210,7 +210,7 @@ for i in range(0,len(vals)):
           " and the prediction is " + str(sc_2_v_y.inverse_transform(regressor.predict
                                                                      (sc_2_v_x.transform([[angle_vals[i]]])))))
 
-print(y_rbf_1_u)
+#print(y_rbf_1_u)
 
 #sample weight for 6 u
 #sample_weight=[1, 0, 1, 0, .1, .1, .1, 0, 1, 0, .1, 1, 0, 1, 0, 1, .1, 1, 1, 1]
