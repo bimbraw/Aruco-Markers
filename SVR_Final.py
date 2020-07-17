@@ -195,15 +195,27 @@ y_rbf_7_v = svr_rbf.fit(x_7_v, y_7_v).predict(x_7_v)
 y_rbf_8_v = svr_rbf.fit(x_8_v, y_8_v).predict(x_8_v)
 
 # Predicting a new result
-df = pd.read_csv("SVM_2_u.csv")
+df = pd.read_csv("SVM_1_u.csv")
 vals = df.values[:,1]
 angle_vals = df.values[:,0]
 #print(vals[0])
 
 for i in range(0,len(vals)):
     #print(vals[i])
-    print(sc_2_u_y.inverse_transform(regressor.predict(sc_2_v_x.transform([[angle_vals[i]]]))))
+    print(sc_1_u_y.inverse_transform(regressor.predict(sc_1_u_x.transform([[40]]))))
 
+print(sklearn.metrics.r2_score(y_1_u, y_rbf_1_u, multioutput='uniform_average'))
+
+'''
+plt.scatter(x_3_u, y_3_u, color='darkorange', label='data')
+plt.plot(x_3_u, y_rbf_3_u, color='navy', label='RBF model')
+plt.xlabel('Normalized Angle Values')
+plt.ylabel('Normalized U coordinate Values')
+plt.title('Fittings and data plotting')
+plt.legend()
+plt.show()
+'''
+'''
 for i in range(0,len(vals)):
     print(str(i) + ". For " + str(angle_vals[i]) +
           " degrees, the value is " + str(vals[i]) +
@@ -214,6 +226,9 @@ for i in range(0,len(vals)):
 
 #sample weight for 6 u
 #sample_weight=[1, 0, 1, 0, .1, .1, .1, 0, 1, 0, .1, 1, 0, 1, 0, 1, .1, 1, 1, 1]
+
+#sample weight for new 1u
+#sample_weight=[1, 1, 1, .1, .1, .1, .1, 1, .1, .1, .1, 1, 0, .1, .1, 1, .1, 1, 1, 1],
 
 print(len(y_1_u))
 
@@ -231,7 +246,7 @@ plt.ylabel('Normalized U coordinate Values')
 plt.title('Fittings and data plotting')
 plt.legend()
 plt.show()
-
+'''
 
 '''
 #print(sc_1_u_y.inverse_transform(regressor.predict(sc_1_u_x.transform([[dataset_1_u]]))))
